@@ -1,0 +1,124 @@
+﻿<phone:PhoneApplicationPage
+    xmlns:local="clr-namespace:ControlTiltEffect"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    x:Class="QuickyCalc.Pages.TipCalcPage"
+    local:TiltEffect.IsTiltEnabled="True"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480" Loaded="PhoneApplicationPage_Loaded" shell:SystemTray.IsVisible="True">
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" BackgroundColor="#FF294551" ForegroundColor="#FFD6D6D6">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarIconButton x:Name="appBarMenu_Settings" IconUri="/Icons/appbar.feature.settings.rest.png" Text="settings..." Click="appBarMenu_Settings_Click"/>
+                <shell:ApplicationBarMenuItem x:Name="appBarMenu_About" Text="about..." Click="appBarMenu_About_Click"/>
+            </shell:ApplicationBar.MenuItems>
+            <shell:ApplicationBarIconButton x:Name="appBar_Calc" IconUri="/Icons/appbar.calculator.rest.png" Text="calculator" Click="appBar_Calc_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#FF0F2028">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Button x:Name="CalculateButton"
+        		Content="calculate"
+        		VerticalAlignment="Bottom"
+        		HorizontalAlignment="Left"
+        		Foreground="#FFD6D6D6"
+        		BorderBrush="Black"
+        		BorderThickness="3" 
+        		Height="91" 
+        		Width="230" 
+        		Click="CalculateButton_Click" 
+                        Margin="-8,0,0,0" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Background="#FF294551" 
+                        />
+            <Button x:Name="ClearButton"
+            	Content="clear"
+            	Foreground="#FFD6D6D6"
+            	BorderBrush="Black"
+            	BorderThickness="3"
+            	Height="91" 
+            	Click="ClearButton_Click" Width="230" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                        d:LayoutOverrides="VerticalAlignment" Background="#FF294551" 
+                        />
+            <StackPanel VerticalAlignment="Bottom" Height="597" Margin="0,0,0,91">
+                <TextBlock x:Name="ApplicationTitle" Text="QUICKYCALC" Foreground="#FFD6D6D6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="9,0,0,0" />
+                <TextBlock x:Name="Tittle" Text="tip calculator" Margin="9,0,8,0" Foreground="#FFD6D6D6" TextAlignment="Right" FontSize="77.333" Height="96" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                <TextBlock x:Name="TotalAmountTxtBlock"
+                           Text="Enter Total Amount"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Center"
+                           Foreground="#FFD6D6D6"
+                           FontSize="22"
+                           />
+                <Button x:Name="enterAmountButton" Height="72" Background="#FF294551" BorderBrush="Black" Foreground="#FFD6D6D6" Click="enterAmountButton_Click" />
+                <TextBlock x:Name="TipPercentageTxtBlock"
+                           Text="Enter Tip Percentage"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Center"
+                           Foreground="#FFD6D6D6"
+                           FontSize="22"
+                           />
+                <Button x:Name="enterTipButton" Height="72" Background="#FF294551" BorderBrush="Black" Foreground="#FFD6D6D6" Click="enterTipButton_Click" />
+                <TextBlock x:Name="SplitBillTxtBlock"
+                           Text="Split Bill Amount"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Center"
+                           Foreground="#FFD6D6D6"
+                           FontSize="22"
+                           />
+                <Button x:Name="enterSplitButton" Height="72" Background="#FF294551" BorderBrush="Black" Foreground="#FFD6D6D6" Click="enterSplitButton_Click" />
+            </StackPanel>
+            <StackPanel Height="166" Margin="8,0,0,95" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="214">
+            	<TextBlock x:Name="TotalBillTxtBlock"
+            		Text="Total Bill: $0.00"
+            		VerticalAlignment="Bottom"
+            		HorizontalAlignment="Left"
+            		Foreground="#FFD6D6D6"
+            		FontSize="22"
+            		Margin="10,10,0,10"
+            		Width="299"
+                           />
+            	<TextBlock x:Name="TipBillTxtBlock"
+            		Text="Tip Amount: $0.00"
+            		VerticalAlignment="Bottom"
+            		HorizontalAlignment="Left"
+            		Foreground="#FFD6D6D6"
+            		FontSize="22"
+            		Margin="10,10,0,10" 
+            		Width="299" 
+                           />
+            	<TextBlock x:Name="SplitAmountTxtBlock"
+            		Text="Split Total: $0.00"
+            		VerticalAlignment="Bottom"
+            		HorizontalAlignment="Left"
+            		Foreground="#FFD6D6D6"
+            		FontSize="22"
+            		Margin="10,10,0,10"
+            		Width="299"
+                           />
+            </StackPanel>
+            <StackPanel Height="99" Margin="226,0,9,95" VerticalAlignment="Bottom">
+            	<toolkit:ToggleSwitch x:Name="roundSwitch" Header="Round Split" Height="117" Margin="0,0,-29,0" Background="#FF0F2028" Foreground="#FFD6D6D6" SwitchForeground="#FF294551" BorderBrush="#FFAD0000" Checked="roundSwitch_Checked" Unchecked="roundSwitch_Unchecked"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

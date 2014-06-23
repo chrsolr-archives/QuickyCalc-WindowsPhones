@@ -1,0 +1,69 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:local="clr-namespace:QuickyCalc"
+    
+    xmlns:Microsoft_Phone_Controls_Maps_Overlays="clr-namespace:Microsoft.Phone.Controls.Maps.Overlays;assembly=Microsoft.Phone.Controls.Maps" 
+    x:Class="QuickyCalc.Pages.SettingsPage"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
+    
+    <!--<phone:PhoneApplicationPage.Resources>
+        <local:settings x:Key="settings"></local:settings>
+    </phone:PhoneApplicationPage.Resources>-->
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" BackgroundColor="#FF294551" ForegroundColor="#FFD6D6D6">
+            <shell:ApplicationBarIconButton IconUri="/Icons/appbar.save.rest.png" Text="save" Click="ApplicationBarIconButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#FF0F2028">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="QUICKYCALC" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FFD6D6D6"/>
+            <TextBlock x:Name="PageTitle" Text="settings" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#FFD6D6D6"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel HorizontalAlignment="Stretch" 
+                        x:Name="stackPanel1" 
+                        VerticalAlignment="Stretch" 
+                        Margin="0,0,0,0" >
+                <TextBlock Height="48" 
+                           x:Name="systemSettingsTittle" 
+                           Text="System Settings" 
+                           Foreground="#FFD6D6D6"
+                           FontSize="30"
+                           />
+                <CheckBox Background="#FF294551" 
+                          BorderBrush="#C0FFFFFF" 
+                          Content="Ask Before Exiting" 
+                          Foreground="#FFD6D6D6" 
+                          Height="72" 
+                          x:Name="exitCheckBox" 
+                          Width="425" 
+                          />
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
